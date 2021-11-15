@@ -6,18 +6,24 @@ public class Cuenta {
     private double saldo;
 
     public Cuenta(double saldoInicial) {
-        this.saldo = 0;
+        this.saldo = saldoInicial;
     }
 
     public boolean ingreso(double cantidad) {
-        return false;
+        saldo += cantidad;
+        return true;
     }
 
     public boolean reintegro(double cantidad) {
-        return false;
+        if(saldo-cantidad < MIN_FONDOS){
+            return false;
+        }else{
+            saldo -= cantidad;
+            return true;
+        }
     }
     
     public double getSaldo(){
-        return 0;
+        return saldo;
     }
 }
